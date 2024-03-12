@@ -45,7 +45,7 @@
     </style>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/homepage">Navbar</a>
+          <a class="navbar-brand" href="/homepage">Language Translation FeedBack</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -58,13 +58,34 @@
           </div>
         </div>
       </nav>
-    <h1>Language Evaluation</h1>
 
     <!-- Card Component -->
     <form action="/register" method="POST">
         {% csrf_token %}
         {% load static %}
         <div class="container">
+            <table class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col">rating</th>
+                    <td class="text-center" scope="col">1</td>
+                    <td class="text-center" scope="col">2</td>
+                    <td class="text-center" scope="col">3</td>
+                    <td class="text-center" scope="col">4</td>
+                    <td class="text-center" scope="col">5</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Label</th>
+                    <td class="text-center">Bad</td>
+                    <td class="text-center">Poor</td>
+                    <td class="text-center">Fair</td>
+                    <td class="text-center">Good</td>
+                    <td class="text-center">Excellent</td>
+                  </tr>
+                </tbody>
+            </table>
             {% for data in datas %}
             <div class="card">
                 <div class="row">

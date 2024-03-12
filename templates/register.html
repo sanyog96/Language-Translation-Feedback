@@ -25,7 +25,7 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/homepage">Navbar</a>
+          <a class="navbar-brand" href="/homepage">Language Translation FeedBack</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -38,8 +38,33 @@
           </div>
         </div>
       </nav>
-    SUCCESSFULL
-    
+    <div class="container">
+      <br>
+      <h4>SUCCESSFULL SAVED</h4>
+      <br>
+      <table class="table table-bordered table-sm table-condensed">
+        <tbody>
+          <tr>
+            <th>Number of feedbacks</th>
+            <td class="text-center">{{datas.counter}}</td>
+          </tr>
+          <tr>
+            <th>Overall Average Text Rating</th>
+            <td class="text-center">{{datas.overall_average_text_rating}}</td>
+          </tr>
+          <tr>
+            <th>Overall Average audio Rating</th>
+            <td class="text-center">{{datas.overall_average_audio_rating}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Number of feedbacks : {{datas.counter}}
+    <br>
+    Overall Average Text Rating : {{datas.overall_average_text_rating}}
+    <br>
+    Overall Average audio Rating : {{datas.overall_average_audio_rating}}
+    <br> -->
 
     <!--  Linked CDN links to support bootstrap functionality -->
     <script

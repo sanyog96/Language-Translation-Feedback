@@ -9,15 +9,10 @@ import sys
 import json
 from django.conf import settings
 
-
-
-MEDIA_ROOT = settings.MEDIA_ROOT
-print(MEDIA_ROOT)
-
 # Create your views here.
 
 # Create a dummy list containing the data of a user as a dictionary.
-users = pd.read_csv("D:\S2ST\evaluation\static\data.csv", sep='|')
+users = pd.read_csv("D:\S2ST\Language Translation Feedback\static\data.csv", sep='|')
 # print(users.columns)
 # Create your views here.
 
@@ -63,9 +58,9 @@ def index(request):
 def post(request):
 #    form = self.form_class(request.POST)
     if request.method == 'POST':
-        print(request.POST.keys())
-        with open('D:\S2ST\evaluation\media\poll.json', 'r') as f1:
-            json_object = json.load(f1)    
+        # print(request.POST.keys())
+        with open('D:\S2ST\Language Translation Feedback\media\poll.json', 'r') as f1:
+            json_object = json.load(f1)
         # print(json_object)
         # print(type(request.POST.dict()))
         values_dict = {
@@ -77,15 +72,39 @@ def post(request):
             }
         response = request.POST.dict()
         result = dict()
+        text_total = 0
+        audio_total = 0
+        counter = 0
         for key, value in response.items():
             if key != 'csrfmiddlewaretoken':
+                if 'text' in key:
+                    text_total += values_dict[value]
+                    counter += 1
+                if 'audio' in key:
+                    audio_total += values_dict[value]
                 result[key] = values_dict[value]
-        print(response)
+        result['average_text_rating'] = float(text_total)/float(counter)
+        result['average_audio_rating'] = float(audio_total)/float(counter)
+        # print(result)
         json_object['count'] = json_object['count'] + 1
         json_object['users'].append(result)
-        with open('D:\S2ST\evaluation\media\poll.json', 'w') as f1:
+        total_text_rating = 0
+        total_audio_rating = 0
+        for user in json_object['users']:
+            total_text_rating += user['average_text_rating']
+            total_audio_rating += user['average_audio_rating']
+        items = dict()
+        json_object["overall_average_text_rating"] = float(total_text_rating)/float(json_object['count'])
+        json_object["overall_average_audio_rating"] = float(total_audio_rating)/float(json_object['count'])
+        with open('D:\S2ST\Language Translation Feedback\media\poll.json', 'w') as f1:
             json.dump(json_object, f1)
+        items['counter'] = json_object['count']
+        items["overall_average_text_rating"] = round(json_object["overall_average_text_rating"], 2)
+        items["overall_average_audio_rating"] = round(json_object["overall_average_audio_rating"], 2)
+        context = {
+            "datas" : items
+        }
     
     # print(request.POST)
-    return render(request, "register.html", request.POST)
+    return render(request, "register.html", context)
 
