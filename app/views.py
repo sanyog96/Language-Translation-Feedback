@@ -24,6 +24,7 @@ def evaluate(request):
         item_dict['english_source'] = users.iloc[id]['english_source']
         item_dict['lambani_predicted'] = users.iloc[id]['lambani_predicted']
         item_dict['lambani_target'] = users.iloc[id]['lambani_target']
+        item_dict['kannada_sentence'] = users.iloc[id]['kannada_sentence']
         items.append(item_dict)
 
     context = {
