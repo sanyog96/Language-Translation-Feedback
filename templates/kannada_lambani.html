@@ -72,7 +72,7 @@
       </nav>
 
     <!-- Card Component -->
-    <form action="/saveAudio" method="POST">
+    <form action="/saveKannadaLambani" method="POST">
         {% csrf_token %}
         {% load static %}
         <div class="container">
@@ -102,11 +102,10 @@
             <div class="card">
                 <div class="row">
                     <div class="col-sm-6">
-                        <!-- <p class="card-text">English Sentence : {{ data.english_source }}</p> -->
-                        <p class="card-text">Lambani Sentence : {{ data.lambani_sentence }}</p>
-                        <p class="card-text">Truth Lambani Audio</p>
+                        <p class="card-text">kannada Source : {{ data.kannada_source }}</p>
+                        <p class="card-text">Lambani Truth : {{ data.lambani_target }}</p>
+                        <p class="card-text">Lambani Predicted : {{data.lambani_predicted}}</p>
                         <br>
-                        <p class="card-text">Predicted Lambani Audio</p>
                         <!-- <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="textinlineRadioOptions_{{data.id}}" id="textinlineRadio1_{{data.id}}" value="option1" checked>
                             <label class="form-check-label" for="inlineRadio1">1</label>
@@ -143,38 +142,27 @@
 
                     </div>
                     <div class="col-md-6">
-                        <!-- <p class="card-text">Lambani Sentence : {{ data.lambani_target }}</p> -->
                         <br>
-                        <audio controls pre-load="auto">
-                            <source src="{% get_media_prefix %}{{data.lambani_truth_audio}}" type="audio/wav">
-                            Your browser does not support the audio element.
-                        </audio>
-                        <br>
-                        <br>
-                        <audio controls pre-load="auto">
-                            <source src="{% get_media_prefix %}{{data.lambani_predicted_audio}}" type="audio/wav">
-                            Your browser does not support the audio element.
-                        </audio>
                         <br>
                         <br>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="audioinlineRadioOptions_{{data.id}}" id="audioinlineRadio1_{{data.id}}" value="option1" checked>
+                            <input class="form-check-input" type="radio" name="textinlineRadioOptions_{{data.id}}" id="textinlineRadio1_{{data.id}}" value="option1" checked>
                             <label class="form-check-label" for="inlineRadio1">1</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="audioinlineRadioOptions_{{data.id}}" id="audioinlineRadio2_{{data.id}}" value="option2">
+                            <input class="form-check-input" type="radio" name="textinlineRadioOptions_{{data.id}}" id="textinlineRadio2_{{data.id}}" value="option2">
                             <label class="form-check-label" for="inlineRadio2">2</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="audioinlineRadioOptions_{{data.id}}" id="audioinlineRadio3_{{data.id}}" value="option3">
+                            <input class="form-check-input" type="radio" name="textinlineRadioOptions_{{data.id}}" id="textinlineRadio3_{{data.id}}" value="option3">
                             <label class="form-check-label" for="inlineRadio3">3</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="audioinlineRadioOptions_{{data.id}}" id="audioinlineRadio4_{{data.id}}" value="option4">
+                            <input class="form-check-input" type="radio" name="textinlineRadioOptions_{{data.id}}" id="textinlineRadio4_{{data.id}}" value="option4">
                             <label class="form-check-label" for="inlineRadio4">4</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="audioinlineRadioOptions_{{data.id}}" id="audioinlineRadio5_{{data.id}}" value="option5">
+                            <input class="form-check-input" type="radio" name="textinlineRadioOptions_{{data.id}}" id="textinlineRadio5_{{data.id}}" value="option5">
                             <label class="form-check-label" for="inlineRadio5">5</label>
                         </div>
                         <!-- <p class="card-text"></p>
